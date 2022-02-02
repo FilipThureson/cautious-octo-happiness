@@ -9,8 +9,6 @@ class indexController extends Controller
 {
     public function index()
     {
-        if(!Session::get('isLogged')){
-
-        }
+        return view('welcome');
     }
 }
