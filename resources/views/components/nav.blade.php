@@ -8,7 +8,7 @@
                 <input type="text" placeholder="Search.." name="search">
             </li>
             @if (Session::get('name'))
-                <li><a href="#">New Post</a></li>
+                <li><a href="/newPost">New Post</a></li>
                 <li><a href="#">My Posts</a></li>
                 <li><a href="/api/logout">Logout</a></li>
             @else
