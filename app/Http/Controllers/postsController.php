@@ -25,13 +25,32 @@ class postsController extends Controller
         ];
 
         $success = Post::new($post);
-        return $success;
+        return redirect('/');
     }
     public function singlePost($id)
     {
         # code...
         $post = Post::getOne($id);
+        return view('singlePost', ['post'=>$post]);
+    }
+
+    public function getComments($id){
         $comments = Post::getComments($id);
-        return view('singlePost', ['post'=>$post, 'comments'=> $comments]);
+        return $comments;
+    }
+    public function addComment(){
+        $data = [
+            'parent_post' => Request::post('parent'),
+            'blog' => Request::post('blog'),
+            'email_fk' => Request::post('email'),
+            'title' => "comment"
+        ];
+
+        $status = Post::addComment($data);
+        if($status){
+            return back();
+        }else{
+            return "server Error Please try again!";
+        }
     }
 }

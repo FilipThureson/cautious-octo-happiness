@@ -9,7 +9,6 @@
             </li>
             @if (Session::get('name'))
                 <li><a href="/newPost">New Post</a></li>
-                <li><a href="#">My Posts</a></li>
                 <li><a href="/api/logout">Logout</a></li>
             @else
             <li><a href="/login">Login</a></li>

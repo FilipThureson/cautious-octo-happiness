@@ -22,7 +22,6 @@
             </form>
         </main>
     @endif
-
     <script src="https://cdn.tiny.cloud/1/fsua0ssfdpv74dcehnti9bto8m8q0u2ddzpc5c71y2cihi5k/tinymce/5/tinymce.min.js" referrerpolicy="origin"></script>
     <script src="{{ asset('js/newPost.js') }}"></script>
 </body>

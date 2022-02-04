@@ -15,8 +15,19 @@ main div{
 .commentsWrapper{
     height: 80vh;
     overflow-y: scroll;
+    width: 100%;
+}
+.comment{
+    width: 400px;
+    border-left: 2px solid var(--yellow);
 }
 
-.indent2{
-    margin-left: 25px;
+#responseWrapper{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background-color: var(--charcoal);
+    border: 2px solid var(--yellow);
+    display: none;
 }
