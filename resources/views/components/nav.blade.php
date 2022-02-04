@@ -13,8 +13,10 @@
                 <li><a href="/api/logout">Logout</a></li>
             @else
             <li><a href="/login">Login</a></li>
-            <li><a href="/signup">Sign up</a></li>
+            <li><a href="/register">Sign up</a></li>
             @endif
         </ul>
     </nav>
 </header>
+
+

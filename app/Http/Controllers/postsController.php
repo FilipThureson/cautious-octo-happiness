@@ -27,4 +27,11 @@ class postsController extends Controller
         $success = Post::new($post);
         return $success;
     }
+    public function singlePost($id)
+    {
+        # code...
+        $post = Post::getOne($id);
+        $comments = Post::getComments($id);
+        return view('singlePost', ['post'=>$post, 'comments'=> $comments]);
+    }
 }

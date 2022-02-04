@@ -25,4 +25,5 @@ Route::get('/register', [userController::class, 'registerPage']);
 
 Route::get('/newPost', [postsController::class, 'newPostPage']);
 
+Route::get('/posts/{id}', [postsController::class, 'singlePost']);
 

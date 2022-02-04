@@ -40,8 +40,9 @@ header nav ul *{
     color: var(--charcoal);
 }
 .searchField input{
-    background-color: var(--yellow);
-    border-bottom: 2px solid var(--charcoal);
+    background-color: var(--charcoal);
+    border-bottom: 2px solid var(--yellow);
+    color: var(--yellow);
     padding: 5px;
     border-radius: 12px;
     font-size: 1rem;

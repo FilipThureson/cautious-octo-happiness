@@ -4,5 +4,7 @@ tinymce.init({
     menubar: false,
     resize: false,
     toolbar: "undo redo | bold italic underline | alignleft aligncenter alignright alignjustify",
-    width : "100%"
+    width : "100%",
+    skin: "oxide-dark",
+    content_css: "dark"
 });

@@ -1,0 +1,22 @@
+body{
+    overflow: hidden;
+}
+main{
+    margin-top: 100px;
+    color: var(--text-color);
+    width: 100%;
+    display: flex;
+}
+
+main div{
+    width: 50%;
+    padding: 20px;
+}
+.commentsWrapper{
+    height: 80vh;
+    overflow-y: scroll;
+}
+
+.indent2{
+    margin-left: 25px;
+}
