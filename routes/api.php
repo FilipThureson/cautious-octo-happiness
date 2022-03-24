@@ -35,3 +35,5 @@ Route::post('/newPost', [postsController::class, 'addPost']);
 Route::get('/getComments/{id}', [postsController::class, 'getComments']);
 
 Route::post('/respond', [postsController::class, "addComment"]);
+
+Route::post('/deletePost', [postsController::class, "deletePost"]);

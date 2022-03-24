@@ -19,7 +19,7 @@ class postsController extends Controller
     public function addPost()
     {
         $post = [
-            'title' => Request::post('title'),
+            'title' => filter_var(Request::post('title'), FILTER_SANITIZE_SPECIAL_CHARS),
             'blog' => Request::post('postText'),
             'email_fk' => Session::get('email')
         ];
@@ -30,14 +30,14 @@ class postsController extends Controller
     public function singlePost($id)
     {
         # code...
-        $post = Post::getOne($id);
+        $post = Post::getOne($id)[0];
         return view('singlePost', ['post'=>$post]);
     }
 
     public function getComments($id){
 
         $comments = Post::getComments($id);
-        
+
         return $comments;
     }
     public function addComment(){
@@ -53,6 +53,21 @@ class postsController extends Controller
             return back();
         }else{
             return "server Error Please try again!";
+        }
+    }
+
+    public function deletePost(){
+        $id = Request::post('id');
+        $post = Post::getOne($id);
+        if($post[0]->email === Session::get('email')){
+            if(Post::removePost($id)){
+                return redirect('/');
+            }else{
+                return "error";
+            }
+
+        }else{
+            return 401;
         }
     }
 }

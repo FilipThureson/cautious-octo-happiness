@@ -8,15 +8,21 @@
     <x-nav />
     <main >
         <div class="post">
-            <h1>{{$post[0]->title}}</h1>
-            {!! $post[0]->blog !!}
+            <h1>{{$post->title}}</h1>
+            {!! $post->blog !!}
             <span>
-                -{{$post[0]->name}}
-                : {{$post[0]->created_at}}
+                -{{$post->name}}
+                : {{$post->created_at}}
+            @if (Session::get('email') === $post->email)
+                <form action="/api/deletePost" method="post">
+                    <input type="hidden" name="id" value="{{$post->id}}"/>
+                    <button type="submit">&#128465;</button>
+                </form>
+            @endif
             </span>
-            <button class="respond" id="btn{{$post[0]->id}}">Kommentera!</button>
+            <button class="respond" id="btn{{$post->id}}">Kommentera!</button>
         </div>
-        <div class="commentsWrapper" id="comment{{$post[0]->id}}">
+        <div class="commentsWrapper" id="comment{{$post->id}}">
         </div>
     </main>
     <div id="responseWrapper">

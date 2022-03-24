@@ -24,7 +24,7 @@ class Post extends Model
     }
     public static function getOne($id){
         $posts = DB::table('posts')->join('users', 'users.email', '=', 'posts.email_fk')->where('id', '=', $id)->where('parent_post', '=', -1)->orderByDesc('created_at')->get();
-        $posts[0]->password = "";
+        unset($posts[0]->password);
         return $posts;
     }
 
@@ -32,11 +32,11 @@ class Post extends Model
     getComments($id) -> retunerar array med kommentarer, Varje kommentar har en variabel $comment->child vilket är en ny getComments($id);
     */
     public static function getComments($id){
-        
+
         $comments = DB::table('posts')->join('users', 'users.email', '=', 'posts.email_fk')->where('parent_post', '=', $id)->orderByDesc('created_at')->get();
         foreach($comments as $comment){
             //Hämtar alla kommentarer med förälder idt ($comment->id);
-            $childs = Post::getComments($comment->id);
+            $childs= Post::getComments($comment->id);
             //Lagrar barnen i childs indexet.
             $comment->childs = $childs;
             //tar bort användarens hashade lösenord innan det skickas till klienten.
@@ -49,5 +49,8 @@ class Post extends Model
         ->insert($comment);
 
         return $status;
+    }
+    public static function removePost($id){
+        return DB::table('posts')->where('id', '=', $id)->delete();
     }
 }
