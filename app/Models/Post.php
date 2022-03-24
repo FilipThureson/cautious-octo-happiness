@@ -27,20 +27,22 @@ class Post extends Model
         $posts[0]->password = "";
         return $posts;
     }
+
+    /*
+    getComments($id) -> retunerar array med kommentarer, Varje kommentar har en variabel $comment->child vilket är en ny getComments($id);
+    */
     public static function getComments($id){
+        
         $comments = DB::table('posts')->join('users', 'users.email', '=', 'posts.email_fk')->where('parent_post', '=', $id)->orderByDesc('created_at')->get();
         foreach($comments as $comment){
-            $comment->password = "";
+            //Hämtar alla kommentarer med förälder idt ($comment->id);
+            $childs = Post::getComments($comment->id);
+            //Lagrar barnen i childs indexet.
+            $comment->childs = $childs;
+            //tar bort användarens hashade lösenord innan det skickas till klienten.
+            unset($comment->password);
         }
         return $comments;
-
-        /*
-        $comments = DB::select("select * from (select * from posts, users where email=email_fk order by parent_post, id) posts, (select @pv := '{$id}') initialisation where find_in_set(parent_post, @pv) > 0 and @pv := concat(@pv, ',', id)");
-        foreach($comments as $comment){
-            $comment->password = "";
-        }
-        return $comments;
-        */
     }
     public static function addComment($comment){
         $status = DB::table('posts')

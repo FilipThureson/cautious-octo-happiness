@@ -5,6 +5,8 @@ use App\Http\Controllers\postsController;
 use App\Http\Controllers\userController;
 
 use Illuminate\Support\Facades\Route;
+use App\Models\Post;
+
 
 /*
 |--------------------------------------------------------------------------
@@ -26,4 +28,3 @@ Route::get('/register', [userController::class, 'registerPage']);
 Route::get('/newPost', [postsController::class, 'newPostPage']);
 
 Route::get('/posts/{id}', [postsController::class, 'singlePost']);
-

@@ -35,7 +35,9 @@ class postsController extends Controller
     }
 
     public function getComments($id){
+
         $comments = Post::getComments($id);
+        
         return $comments;
     }
     public function addComment(){

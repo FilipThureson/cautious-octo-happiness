@@ -17,28 +17,6 @@
             <button class="respond" id="btn{{$post[0]->id}}">Kommentera!</button>
         </div>
         <div class="commentsWrapper" id="comment{{$post[0]->id}}">
-            <!--
-            <div class="comment indent1">
-                <h3>Name Place</h3>
-                <p>This is the comment: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam ut possimus optio error asperiores voluptatum? Expedita laborum quo iusto sit ullam atque, quis exercitationem accusamus officia? Eos pariatur autem veritatis odio iure molestias at optio, consectetur impedit ex aperiam distinctio fugiat, laborum ut eaque explicabo debitis, aliquam cumque nemo porro?</p>
-                <p>2021-15-21 23:24:11</p>
-            </div>
-            <div class="comment indent2">
-                <h3>Name Place</h3>
-                <p>This is the comment: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam ut possimus optio error asperiores voluptatum? Expedita laborum quo iusto sit ullam atque, quis exercitationem accusamus officia? Eos pariatur autem veritatis odio iure molestias at optio, consectetur impedit ex aperiam distinctio fugiat, laborum ut eaque explicabo debitis, aliquam cumque nemo porro?</p>
-                <p>2021-15-21 23:24:11</p>
-            </div>
-            <div class="comment indent1">
-                <h3>Name Place</h3>
-                <p>This is the comment: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam ut possimus optio error asperiores voluptatum? Expedita laborum quo iusto sit ullam atque, quis exercitationem accusamus officia? Eos pariatur autem veritatis odio iure molestias at optio, consectetur impedit ex aperiam distinctio fugiat, laborum ut eaque explicabo debitis, aliquam cumque nemo porro?</p>
-                <p>2021-15-21 23:24:11</p>
-            </div>
-            <div class="comment indent1">
-                <h3>Name Place</h3>
-                <p>This is the comment: Lorem, ipsum dolor sit amet consectetur adipisicing elit. Numquam ut possimus optio error asperiores voluptatum? Expedita laborum quo iusto sit ullam atque, quis exercitationem accusamus officia? Eos pariatur autem veritatis odio iure molestias at optio, consectetur impedit ex aperiam distinctio fugiat, laborum ut eaque explicabo debitis, aliquam cumque nemo porro?</p>
-                <p>2021-15-21 23:24:11</p>
-            </div>
-        -->
         </div>
     </main>
     <div id="responseWrapper">
