@@ -29,8 +29,12 @@ class postsController extends Controller
     }
     public function singlePost($id)
     {
+<<<<<<< Updated upstream
         # code...
         $post = Post::getOne($id)[0];
+=======
+        $post = Post::getOne($id);
+>>>>>>> Stashed changes
         return view('singlePost', ['post'=>$post]);
     }
 
@@ -42,8 +46,8 @@ class postsController extends Controller
     }
     public function addComment(){
         $data = [
-            'parent_post' => Request::post('parent'),
-            'blog' => Request::post('blog'),
+            'parent_post' => filter_var(Request::post('parent'), FILTER_SANITIZE_SPECIAL_CHARS),
+            'blog' => filter_var(Request::post('blog'), FILTER_SANITIZE_SPECIAL_CHARS),
             'email_fk' => Request::post('email'),
             'title' => "comment"
         ];
