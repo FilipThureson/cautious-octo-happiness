@@ -19,6 +19,8 @@ use App\Models\Post;
 |
 */
 
+/*        '/example' - urlpath           [controller::class, 'function'] - controller samt funktionens namn */
+
 Route::get('/', [indexController::class, 'index']);
 
 Route::get('/login', [userController::class, 'loginPage']);

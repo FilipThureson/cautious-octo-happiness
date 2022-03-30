@@ -1,3 +1,5 @@
+// skapar tinyMCE-editor istället för textarea
+
 tinymce.init({
     selector: 'textarea',
     //plugins: 'advlist autolink lists link image charmap print preview hr anchor pagebreak',

@@ -17,10 +17,7 @@ use Illuminate\Support\Facades\Session;
 |
 */
 
-Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
-    return $request->user();
-});
-
+// Routes som används för att ladda upp data eller hämta data för ajax samt forms
 Route::post('/login', [userController::class, 'login']);
 
 Route::post('/register', [userController::class, 'register']);

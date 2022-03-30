@@ -8,6 +8,8 @@ use Illuminate\Support\Facades\DB;
 
 class Post extends Model
 {
+
+    //skapar ny post med inskickade post array
     public static function new($post)
     {
         $status = DB::table('posts')
@@ -15,6 +17,7 @@ class Post extends Model
 
         return $status;
     }
+    //hämtar alla posts samt tar bort lösenordet från dem
     public static function get(){
         $posts = DB::table('posts')->join('users', 'users.email', '=', 'posts.email_fk')->where('parent_post', '=', '-1')->orderByDesc('created_at')->get();
         foreach($posts as $post){
@@ -22,6 +25,7 @@ class Post extends Model
         };
         return $posts;
     }
+    //hämtar en post med inskickad id
     public static function getOne($id){
         $posts = DB::table('posts')->join('users', 'users.email', '=', 'posts.email_fk')->where('id', '=', $id)->where('parent_post', '=', -1)->orderByDesc('created_at')->get();
         unset($posts[0]->password);
@@ -44,12 +48,14 @@ class Post extends Model
         }
         return $comments;
     }
+    //skapar ny kommentar med inskickade kommentar array
     public static function addComment($comment){
         $status = DB::table('posts')
         ->insert($comment);
 
         return $status;
     }
+    //tar bort en post med inskickad id
     public static function removePost($id){
         return DB::table('posts')->where('id', '=', $id)->delete();
     }

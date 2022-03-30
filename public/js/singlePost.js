@@ -1,3 +1,4 @@
+// hämtar alla kommenntarer till en specifik post
 function fetchQuestions(id){
     $.ajax({
         url: "/api/getComments/" + id,
@@ -6,19 +7,19 @@ function fetchQuestions(id){
             'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
         },
         success:function(comments){
-            renderComments(comments);
-            console.log(comments);
+            renderComments(comments); // renderar kommentarerna
         },
         error: function(error) {
-         console.log(error);
+         console.log(error); // vid error log det i konsolen
         }
     });
 }
-
+// renderar kommentarerna som html
 function renderComments(comments){
-        comments.forEach(comment => {
-            
-            parent_post = document.getElementById('comment' + comment.parent_post);
+
+        comments.forEach(comment => { // loopar igenom alla kommentarer och renderar dom
+
+            parent_post = document.getElementById('comment' + comment.parent_post); //hämtar parent postens div tag för att kunna rendera kommentaren i rätt div
             parent_post.innerHTML += `
             <div class="comment" id="comment${comment.id}">
 
@@ -28,14 +29,16 @@ function renderComments(comments){
                 <button id="btn${comment.id}"class="respond">Svara</button>
 
             </div>`;
+            //ifall kommentaren har ett eller mer barn så renderas dessa också (recursion)
             if(comment.childs.length > 0){
                 renderComments(comment.childs);
             }
         });
 }
 
-fetchQuestions(window.location.pathname.substring(7));
+fetchQuestions(window.location.pathname.substring(7)); // hämtar alla kommentarer till en specifik post med id från url
 
+//vid klick på svara på en kommentar eller blogg inlägget renderas en form för att skriva en kommentar
 $(document).on('click', '.respond', function() {
     document.getElementById("responseWrapper").style.display = "inline";
     document.getElementById('responseForm').addEventListener('submit', (e)=>{
