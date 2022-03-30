@@ -39,8 +39,12 @@ class postsController extends Controller
     //returnerar en post från angiven id
     public function singlePost($id)
     {
+<<<<<<< Updated upstream
         # code...
         $post = Post::getOne($id)[0];
+=======
+        $post = Post::getOne($id);
+>>>>>>> Stashed changes
         return view('singlePost', ['post'=>$post]);
     }
 
